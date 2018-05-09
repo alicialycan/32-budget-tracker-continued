@@ -1,9 +1,6 @@
 import React from 'react';
 import {connect} from 'redux-react';
 import ExpenseItem from './expenseItem.jsx';
-import {
-  expenseCreate
- } from '../actions/expense-actions.jsx';
 
 class ExpenseList extends React.Component {
   constructor(props) {
@@ -14,15 +11,34 @@ class ExpenseList extends React.Component {
 
   displayAllExpenses() {
     return this.props.expenses.map(expense => {
-      return <expenseItem
+      return <ExpenseItem
         key={expense.id}
         id={expense.id}
-        categoryId={expense.id}
-        timestamp={}
         name={expense.name}
         price={expense.price}
         isEditing={expense.isEditing}>
-      </expenseItem>
-    })
+      </ExpenseItem>;
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <h2>Current Expenses List:</h2>
+        <ul>{this.displayAllExpenses}</ul>
+      </div>
+    );
   }
 }
+
+const mapStateToProps = state => ({
+  expenses: state.expenses
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addExpense: () => dispatch(addExpense())
+  };
+};
+
+export default connect (mapStateToProps, mapDispatchToProps)(ExpenseList);

@@ -9,13 +9,15 @@ class ExpenseForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      timestamp: new Date(),
       name: '',
-      cost: '',
+      price: 0,
       categoryId: this.props.categoryId,
+      isEditing: false,
     };
 
-    this.handleChange = handleChange.bind(this);
-    this.handleSubmit = handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(ev) {

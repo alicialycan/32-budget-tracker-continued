@@ -32,7 +32,7 @@ class CategoryForm extends React.Component {
     if (this.props.name === 'update') {
       let newValue = Object.assign(this.state, {isEditing: false, id: this.props.id
       });
-      this.props.categoryUpdate(this.state); //newvalue
+      this.props.categoryUpdate(this.state); //new value
     }
   }
 
