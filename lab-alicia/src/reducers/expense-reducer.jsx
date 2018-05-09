@@ -2,23 +2,24 @@ import {
   EXPENSE_CREATE,
   EXPENSE_UPDATE,
   EXPENSE_DELETE,
-} from '.../actions/expenses-actions.jsx';
+} from '../actions/expense-actions.jsx';
 import uuidv4 from 'uuid/v4';
 
 const initialState = {
   expenses: [],
 };
 
-export default function expenseReducer(state, action) {
+const expenseReducer = (state = initialState, action) => {
+  let newState = {};
   if (state === undefined) {
     return initialState;
   }
 
-  let newState = {};
   switch (action.type) {
   case EXPENSE_CREATE:
+    console.log('action', action);
     return Object.assign(newState, state, {
-      expenses: [...state.expenses, new Date()]
+      expenses: [newState.expenses.concat(action.payload)]
     });
   case EXPENSE_UPDATE:
     return Object.assign(newState, state, {
@@ -30,4 +31,6 @@ export default function expenseReducer(state, action) {
     });
   default: return state;
   }
-}
+};
+
+export default expenseReducer;

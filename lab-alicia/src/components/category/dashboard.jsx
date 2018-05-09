@@ -4,10 +4,10 @@ import {
   categoryCreate,
   categoryUpdate,
   categoryDestroy,
-} from '../actions/category-actions.jsx';
+} from '../../actions/category-actions.jsx';
 
-import CategoryList from './category/categoryList.jsx';
-import CategoryForm from './category/categoryForm.jsx';
+import CategoryList from './categoryList.jsx';
+import CategoryForm from './categoryForm.jsx';
 
 class Dashboard extends React.Component {
   render() {

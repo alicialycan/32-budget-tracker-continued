@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect} from 'redux-react';
+import {connect} from 'react-redux';
 import ExpenseItem from './expenseItem.jsx';
 
 class ExpenseList extends React.Component {
@@ -35,9 +35,9 @@ const mapStateToProps = state => ({
   expenses: state.expenses
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, getState) => {
   return {
-    addExpense: () => dispatch(addExpense())
+    expenseCreate: val => dispatch(expenseCreate(val)),
   };
 };
 

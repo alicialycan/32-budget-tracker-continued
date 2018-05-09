@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {
   expenseCreate,
   expenseUpdate,
-} from '.../actions/expenses-actions.jsx';
+} from '../../actions/expense-actions.jsx';
 
 class ExpenseForm extends React.Component {
   constructor(props) {
