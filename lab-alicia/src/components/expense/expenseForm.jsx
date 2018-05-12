@@ -52,12 +52,12 @@ class ExpenseForm extends React.Component {
           placeholder="price"
           value={this.state.price}
         />
-        <button
-          onClick={this.props.cancel}>
+        <button onClick={this.props.cancel}>
           Cancel
         </button>
-        <input type="submit" 
-          value={this.props.buttonText} />
+        <button type="submit">
+          {this.props.buttonText}
+        </button>
       </form>
     );
   }

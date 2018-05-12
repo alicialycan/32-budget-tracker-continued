@@ -58,7 +58,7 @@ class CategoryItem extends React.Component {
           onClick={this.toggleEdit}>
           Edit
         </button>
-        <ExpenseForm categoryId={this.props.id} />
+        <ExpenseForm categoryId={this.props.id} buttonText="Add"/>
       </li> 
     );
   }

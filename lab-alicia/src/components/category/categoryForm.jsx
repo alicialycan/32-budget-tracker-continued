@@ -62,10 +62,10 @@ class CategoryForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  categories: state.categories
+  categories: state.categoryStore.categories
 });
 
-const mapDispatchToProps = (dispatch, getState) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     categoryCreate: val => dispatch(categoryCreate(val)),
     categoryUpdate: val => dispatch(categoryUpdate(val)),

@@ -31,7 +31,7 @@ class ExpenseItem extends React.Component {
       return (
         <li>
           <button onClick={this.handleDelete}>Delete</button>
-          <button onClick={this.handleEditMode}>Edit</button>
+          <button onClick={this.cancel}>Edit</button>
           <ExpenseForm action='update' buttonText="Update"
             id={this.props.id} name={this.props.name}
             price={this.props.price} toggleEdit={this.toggleEdit}

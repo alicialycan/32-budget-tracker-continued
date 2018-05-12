@@ -21,7 +21,7 @@ class Dashboard extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { categories: state.categories.categories };
+  return { categories: state.categoryStore.categories };
 };
 
 

@@ -21,7 +21,7 @@ class CategoryList extends React.Component {
   }
 
   displayAllCategories() {
-    return this.props.categories.categories.map(category => {
+    return this.props.categories.map(category => {
       return <CategoryItem 
         key={category.id} 
         id={category.id} 
@@ -45,7 +45,7 @@ class CategoryList extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  categories: state.categories,
+  categories: state.categoryStore.categories,
 });
 
 const mapDispatchToProps = dispatch => {
