@@ -27,7 +27,7 @@ class ExpenseForm extends React.Component {
   handleSubmit(ev) {
     ev.preventDefault();
     if (this.props.name === 'create') {
-      this.props.expenseCreate(this.state);
+      this.props.expenseCreate({...this.state});
     }
     if (this.props.name === 'update') {
       let id = this.props.id;

@@ -3,6 +3,7 @@ import {
   CATEGORY_UPDATE,
   CATEGORY_DESTROY,
 } from '../actions/category-actions.js';
+import uuidv4 from 'uuid/v4';
 
 const initialState = {
   categories: [],
@@ -18,7 +19,11 @@ const categoryReducer = (state = initialState, action) => {
 
   switch (action.type) {
   case CATEGORY_CREATE:
-    return {...state, categories: state.categories.concat(action.payload)};
+    action.payload.id = uuidv4();
+    let newCategories = state.categories.concat(action.payload);
+    console.log(state)
+    console.log(newCategories)
+    return {...state, categories: newCategories};
 
     // currentCategories = state.categories.slice(); //making an arr of current categories
     // let newCategory = Object.assign({},

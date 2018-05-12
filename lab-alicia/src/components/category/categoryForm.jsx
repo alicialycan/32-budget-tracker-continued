@@ -26,7 +26,7 @@ class CategoryForm extends React.Component {
   handleSubmit(ev) {
     ev.preventDefault();
     if (this.props.name === 'create') {
-      this.props.categoryCreate(this.state);
+      this.props.categoryCreate({...this.state});
     }
     if (this.props.name === 'update') {
       let newValue = Object.assign(this.state, {isEditing: false, id: this.props.id
