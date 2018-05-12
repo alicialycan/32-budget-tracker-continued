@@ -1,15 +1,18 @@
+import uuidv4 from 'uuid/v4';
+
 export const EXPENSE_CREATE = 'EXPENSE_CREATE';
 export const EXPENSE_UPDATE = 'EXPENSE_UPDATE';
 export const EXPENSE_DELETE = 'EXPENSE_DELETE';
 
-export const expenseCreate = value => {
-  return {type: EXPENSE_CREATE, value};
+export const expenseCreate = expense => {
+  expense.id = uuidv4();
+  return {type: EXPENSE_CREATE, payload: expense};
 };
 
-export const expenseUpdate = values => {
-  return {type: EXPENSE_UPDATE, values};
+export const expenseUpdate = expense => {
+  return {type: EXPENSE_UPDATE, payload: expense};
 };
 
-export const expenseDelete = id => {
-  return {type: EXPENSE_DELETE, id};
+export const expenseDelete = expense => {
+  return {type: EXPENSE_DELETE, payload: expense};
 };

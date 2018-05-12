@@ -17,17 +17,17 @@ class CategoryItem extends React.Component {
     this.toggleOffEdit = this.toggleOffEdit.bind(this);
   }
 
-  toggleEdit(ev, id) {
-    this.props.categoryUpdate({isEditing: true, id});
+  toggleEdit(ev) {
+    this.props.categoryUpdate({isEditing: true, id: this.props.id});
   }
 
-  toggleOffEdit(ev, id) {
-    this.props.categoryUpdate({isEditing: false, id});
+  toggleOffEdit(ev) {
+    this.props.categoryUpdate({isEditing: false, id: this.props.id});
   }
 
-  handleDelete(ev, id) {
+  handleDelete(ev) {
     ev.preventDefault();
-    this.props.categoryDestroy(id);
+    this.props.categoryDestroy(this.props.id);
   }
 
   render() {
@@ -58,16 +58,16 @@ class CategoryItem extends React.Component {
           onClick={this.toggleEdit}>
           Edit
         </button>
-        <ExpenseForm />
+        <ExpenseForm categoryId={this.props.id} />
       </li> 
     );
   }
 }
     
-const mapDispatchToProps = (dispatch, getState) => {
+const mapDispatchToProps = dispatch => {
   return {
-    categoryUpdate: (values) => dispatch(categoryUpdate(values)),
-    categoryDestroy: id => dispatch(categoryDestroy(id))
+    categoryUpdate: category => dispatch(categoryUpdate(category)),
+    categoryDestroy: categoryId => dispatch(categoryDestroy(categoryId))
   };
 };
 

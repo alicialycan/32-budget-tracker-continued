@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {
-  categoryCreate,
   categoryUpdate,
   categoryDestroy,
 } from '../../actions/category-actions.js';
@@ -10,7 +9,7 @@ import CategoryList from './categoryList.jsx';
 import CategoryForm from './categoryForm.jsx';
 
 class Dashboard extends React.Component {
-  
+
   render() {
     return <div>
       <h1>Track Your Budget</h1>
@@ -28,9 +27,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    categoryCreate: () => dispatch(categoryCreate()),
-    categoryUpdate: values => dispatch(categoryUpdate(values)),
-    categoryDestroy: id => dispatch(categoryDestroy(id)),
+    categoryUpdate: category => dispatch(categoryUpdate(category)),
+    categoryDestroy: category => dispatch(categoryDestroy(category)),
   };
 };
 

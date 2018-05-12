@@ -8,6 +8,16 @@ class CategoryList extends React.Component {
     super(props);
 
     this.displayAllCategories = this.displayAllCategories.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
+  }
+
+  handleDelete(category) {
+    this.props.categoryDestroy(category);
+  }
+
+  handleUpdate(category) {
+    this.props.categoryUpdate(category);
   }
 
   displayAllCategories() {
@@ -17,6 +27,8 @@ class CategoryList extends React.Component {
         id={category.id} 
         name={category.name} 
         budget={category.budget}
+        categoryDestroy={this.handleDelete}
+        categoryUpdate={this.handleUpdate}
         isEditing={category.isEditing}>
       </CategoryItem>;
     });
@@ -36,9 +48,9 @@ const mapStateToProps = state => ({
   categories: state.categories,
 });
 
-const mapDispatchToProps = (dispatch, getState) => {
+const mapDispatchToProps = dispatch => {
   return {
-    categoryCreate: val => dispatch(categoryCreate(val)),
+    categoryCreate: category => dispatch(categoryCreate(category)),
   };
 };
 

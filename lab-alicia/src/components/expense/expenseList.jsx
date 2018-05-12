@@ -7,7 +7,12 @@ class ExpenseList extends React.Component {
   constructor(props) {
     super(props);
 
+    this.handleDelete = this.handleDelete.bind(this);
     this.displayAllExpenses = this.displayAllExpenses.bind(this);
+  }
+
+  handleDelete(expenseId) {
+    this.props.expenseDelete(expenseId);
   }
 
   displayAllExpenses() {
@@ -17,7 +22,9 @@ class ExpenseList extends React.Component {
         id={expense.id}
         name={expense.name}
         price={expense.price}
-        isEditing={expense.isEditing} />;
+        delete={this.handleDelete}
+        toggleEdit={expense.toggleEdit} 
+      />;
     });
   }
 
@@ -32,13 +39,13 @@ class ExpenseList extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { expenses: state.expenses };
+  return { expenses: state.expenses.expenses };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    expenseUpdate: val => dispatch(expenseUpdate(val)),
-    expenseDelete: val => dispatch(expenseDelete(val)),
+    expenseUpdate: expense => dispatch(expenseUpdate(expense)),
+    expenseDelete: expense => dispatch(expenseDelete(expense)),
   };
 };
 

@@ -28,13 +28,12 @@ class ExpenseForm extends React.Component {
     ev.preventDefault();
     if (this.props.name === 'create') {
       this.props.expenseCreate(this.state);
-      this.setState({ name: '', price: 0 });
     }
     if (this.props.name === 'update') {
-      let newValue = Object.assign(this.state, {isEditing: false, id: this.props.id
-      });
+      let id = this.props.id;
       this.props.expenseUpdate(this.state);
-      this.setState({ name: '', price: 0 });
+      this.props.toggleEdit();
+
     }
   }
 
@@ -54,23 +53,20 @@ class ExpenseForm extends React.Component {
           value={this.state.price}
         />
         <button
-          type="submit">
-          Submit
+          onClick={this.props.cancel}>
+          Cancel
         </button>
-        <input type="submit" value={this.props.buttonText} />
+        <input type="submit" 
+          value={this.props.buttonText} />
       </form>
     );
   }
 }
 
-// const mapStateToProps = state => ({
-//   expenses: state.expenses
-// });
-
-const mapDispatchToProps = (dispatch, getProps) => {
+const mapDispatchToProps = dispatch => {
   return {
-    expenseCreate: val => dispatch(expenseCreate(val)),
-    expenseUpdate: val => dispatch(expenseUpdate(val))
+    expenseCreate: expense => dispatch(expenseCreate(expense)),
+    expenseUpdate: expense => dispatch(expenseUpdate(expense))
   };
 };
 
