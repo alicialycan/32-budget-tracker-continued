@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ExpenseForm from './expenseForm.jsx';
-import { expenseUpdate, expenseDelete } from '../../actions/expense-actions.jsx';
+import { expenseUpdate, expenseDelete } from '../../actions/expense-actions.js';
 
 class ExpenseItem extends React.Component {
   constructor(props) {

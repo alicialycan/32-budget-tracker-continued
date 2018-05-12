@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import ExpenseItem from './expenseItem.jsx';
+import { expenseUpdate, expenseDelete } from '../../actions/expense-actions.js';
 
 class ExpenseList extends React.Component {
   constructor(props) {
@@ -16,8 +17,7 @@ class ExpenseList extends React.Component {
         id={expense.id}
         name={expense.name}
         price={expense.price}
-        isEditing={expense.isEditing}>
-      </ExpenseItem>;
+        isEditing={expense.isEditing} />;
     });
   }
 
@@ -31,13 +31,14 @@ class ExpenseList extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  expenses: state.expenses
-});
+const mapStateToProps = state => {
+  return { expenses: state.expenses };
+};
 
-const mapDispatchToProps = (dispatch, getState) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    expenseCreate: val => dispatch(expenseCreate(val)),
+    expenseUpdate: val => dispatch(expenseUpdate(val)),
+    expenseDelete: val => dispatch(expenseDelete(val)),
   };
 };
 

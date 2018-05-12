@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {
   expenseCreate,
   expenseUpdate,
-} from '../../actions/expense-actions.jsx';
+} from '../../actions/expense-actions.js';
 
 class ExpenseForm extends React.Component {
   constructor(props) {
@@ -28,11 +28,13 @@ class ExpenseForm extends React.Component {
     ev.preventDefault();
     if (this.props.name === 'create') {
       this.props.expenseCreate(this.state);
+      this.setState({ name: '', price: 0 });
     }
     if (this.props.name === 'update') {
       let newValue = Object.assign(this.state, {isEditing: false, id: this.props.id
       });
       this.props.expenseUpdate(this.state);
+      this.setState({ name: '', price: 0 });
     }
   }
 
@@ -55,14 +57,15 @@ class ExpenseForm extends React.Component {
           type="submit">
           Submit
         </button>
+        <input type="submit" value={this.props.buttonText} />
       </form>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  expenses: state.expenses
-});
+// const mapStateToProps = state => ({
+//   expenses: state.expenses
+// });
 
 const mapDispatchToProps = (dispatch, getProps) => {
   return {
@@ -71,4 +74,4 @@ const mapDispatchToProps = (dispatch, getProps) => {
   };
 };
 
-export default connect (mapStateToProps, mapDispatchToProps)(ExpenseForm);
+export default connect (null, mapDispatchToProps)(ExpenseForm);

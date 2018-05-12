@@ -3,9 +3,10 @@ import {connect} from 'react-redux';
 import {
   categoryUpdate,
   categoryDestroy,
-} from '../../actions/category-actions.jsx';
+} from '../../actions/category-actions.js';
 
 import CategoryForm from './categoryForm.jsx';
+import ExpenseForm from '../expense/expenseForm.jsx';
 
 class CategoryItem extends React.Component {
   constructor(props) {
@@ -16,19 +17,16 @@ class CategoryItem extends React.Component {
     this.toggleOffEdit = this.toggleOffEdit.bind(this);
   }
 
-  toggleEdit(ev) {
-    let id = ev.target.id;
+  toggleEdit(ev, id) {
     this.props.categoryUpdate({isEditing: true, id});
   }
 
-  toggleOffEdit(ev) {
-    let id = ev.target.id;
+  toggleOffEdit(ev, id) {
     this.props.categoryUpdate({isEditing: false, id});
   }
 
-  handleDelete(ev) {
+  handleDelete(ev, id) {
     ev.preventDefault();
-    let id = ev.target.id;
     this.props.categoryDestroy(id);
   }
 
@@ -48,8 +46,7 @@ class CategoryItem extends React.Component {
       );
     }
     return (
-      <li key={this.props.key} 
-        id={this.props.id}>
+      <li> 
         {this.props.name}: ${this.props.budget} 
         <button 
           id={this.props.id} 
@@ -61,14 +58,11 @@ class CategoryItem extends React.Component {
           onClick={this.toggleEdit}>
           Edit
         </button>
+        <ExpenseForm />
       </li> 
     );
   }
 }
-
-const mapStateToProps = state => ({
-  categories: state.categories
-});
     
 const mapDispatchToProps = (dispatch, getState) => {
   return {
@@ -77,4 +71,4 @@ const mapDispatchToProps = (dispatch, getState) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoryItem);
+export default connect(null, mapDispatchToProps)(CategoryItem);

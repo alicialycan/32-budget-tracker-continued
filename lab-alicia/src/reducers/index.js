@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
-import categoryReducer from './category-app.jsx';
-import expenseReducer from './expense-reducer.jsx';
+import categoryReducer from './category-app';
+import expenseReducer from './expense-reducer';
 
 export default combineReducers({
   categories: categoryReducer,
