@@ -4,5 +4,5 @@ import expenseReducer from './expense-reducer';
 
 export default combineReducers({
   categoryStore: categoryReducer,
-  expenses: expenseReducer
+  expenseStore: expenseReducer
 });

@@ -32,14 +32,14 @@ class ExpenseList extends React.Component {
     return (
       <div>
         <h2>Current Expenses List:</h2>
-        <ul>{this.displayAllExpenses}</ul>
+        <ul>{this.displayAllExpenses()}</ul>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return { expenses: state.expenses.expenses };
+  return { expenses: state.expenseStore.expenses };
 };
 
 const mapDispatchToProps = dispatch => {

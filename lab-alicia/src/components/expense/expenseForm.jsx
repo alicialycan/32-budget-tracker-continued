@@ -26,15 +26,7 @@ class ExpenseForm extends React.Component {
 
   handleSubmit(ev) {
     ev.preventDefault();
-    if (this.props.name === 'create') {
-      this.props.expenseCreate({...this.state});
-    }
-    if (this.props.name === 'update') {
-      let id = this.props.id;
-      this.props.expenseUpdate(this.state);
-      this.props.toggleEdit();
-
-    }
+    this.props.expenseCreate({...this.state});
   }
 
   render() {
@@ -63,11 +55,15 @@ class ExpenseForm extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  expenses: state.expenseStore.expenses
+});
+
 const mapDispatchToProps = dispatch => {
   return {
     expenseCreate: expense => dispatch(expenseCreate(expense)),
-    expenseUpdate: expense => dispatch(expenseUpdate(expense))
+    expenseUpdate: expense => dispatch(expenseUpdate(expense)),
   };
 };
 
-export default connect (null, mapDispatchToProps)(ExpenseForm);
+export default connect (mapStateToProps, mapDispatchToProps)(ExpenseForm);

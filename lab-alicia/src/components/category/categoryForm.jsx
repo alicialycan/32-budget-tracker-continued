@@ -31,7 +31,7 @@ class CategoryForm extends React.Component {
     if (this.props.name === 'update') {
       let newValue = Object.assign(this.state, {isEditing: false, id: this.props.id
       });
-      this.props.categoryUpdate(this.state); //new value
+      this.props.categoryUpdate({...this.state}); //new value
     }
   }
 
@@ -65,7 +65,7 @@ const mapStateToProps = state => ({
   categories: state.categoryStore.categories
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     categoryCreate: val => dispatch(categoryCreate(val)),
     categoryUpdate: val => dispatch(categoryUpdate(val)),

@@ -7,6 +7,7 @@ import {
 
 import CategoryForm from './categoryForm.jsx';
 import ExpenseForm from '../expense/expenseForm.jsx';
+import ExpenseList from '../expense/expenseList.jsx';
 
 class CategoryItem extends React.Component {
   constructor(props) {
@@ -46,7 +47,7 @@ class CategoryItem extends React.Component {
       );
     }
     return (
-      <li> 
+      <li key={this.props.key} id={this.props.id}>
         {this.props.name}: ${this.props.budget} 
         <button 
           id={this.props.id} 
@@ -56,13 +57,18 @@ class CategoryItem extends React.Component {
         <button 
           id={this.props.id} 
           onClick={this.toggleEdit}>
-          Edit
+          Update
         </button>
-        <ExpenseForm categoryId={this.props.id} buttonText="Add"/>
+        <ExpenseForm categoryId={this.props.id} name="update" buttonText="Create Expense"/>
+        <ExpenseList categoryId={this.props.id} />
       </li> 
     );
   }
 }
+
+const mapStateToProps = state => ({
+  categories: state.categoryStore.categories
+});
     
 const mapDispatchToProps = dispatch => {
   return {
@@ -71,4 +77,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(CategoryItem);
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryItem);

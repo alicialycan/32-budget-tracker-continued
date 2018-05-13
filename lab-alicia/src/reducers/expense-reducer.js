@@ -16,22 +16,28 @@ const expenseReducer = (state = initialState, action) => {
   if (state === undefined) {
     return initialState;
   }
-
   switch (action.type) {
   case EXPENSE_CREATE:
-    return Object.assign(newState, state, {
-      expenses: [newState.expenses.concat(action.payload)]
-    });
+    action.payload.id = uuidv4();
+      let newExpenses = state.expenses.concat(action.payload);
+      let updatedState = {...state, expenses: newExpenses}
+      return updatedState;
 
   case EXPENSE_UPDATE:
-    return Object.assign(newState, state, {
-      expenses: [...state.expenses]
+    expenses = state.expenses.map(expense => {
+      if(expenses.id === action.payload.id) {
+        return {...expense, ...action.payload};
+      }
+      return expense;
     });
+    return {...state, expenses};
 
   case EXPENSE_DELETE:
-    return Object.assign(newState, state, {
-      expenses: [...state.expenses]
+    expenses = state.expenses.filter(expense => {
+      return action.payload.id !== expense.id;
     });
+    return {...state, expenses};
+
   default: 
     return state;
   }
