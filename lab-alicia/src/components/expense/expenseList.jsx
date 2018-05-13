@@ -16,8 +16,12 @@ class ExpenseList extends React.Component {
   }
 
   displayAllExpenses() {
-    return this.props.expenses.map(expense => {
+    let filteredList = this.props.expenses.filter(expense => {
+      return expense.categoryId === this.props.categoryId
+    });
+    return filteredList.map(expense => {
       return <ExpenseItem
+        categoryId={this.props.categoryId}
         key={expense.id}
         id={expense.id}
         name={expense.name}

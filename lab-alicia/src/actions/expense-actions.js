@@ -10,6 +10,6 @@ export const expenseUpdate = expense => {
   return {type: EXPENSE_UPDATE, payload: expense};
 };
 
-export const expenseDelete = expense => {
-  return {type: EXPENSE_DELETE, payload: expense};
+export const expenseDelete = expenseId => {
+  return {type: EXPENSE_DELETE, payload: {id: expenseId}};
 };
