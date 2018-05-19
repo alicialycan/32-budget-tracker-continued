@@ -59,7 +59,7 @@ class CategoryItem extends React.Component {
           onClick={this.toggleEdit}>
           Update
         </button>
-        <ExpenseForm categoryId={this.props.id} name="update" buttonText="Create Expense"/>
+        <ExpenseForm categoryId={this.props.id} name="create" buttonText="Create"/>
         <ExpenseList categoryId={this.props.id} />
       </li> 
     );

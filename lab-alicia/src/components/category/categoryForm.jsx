@@ -53,8 +53,7 @@ class CategoryForm extends React.Component {
           value={this.state.budget}
         />
         <button 
-          type="submit">
-          Submit
+          type="submit">{this.props.buttonText}
         </button>
       </form>
     );
