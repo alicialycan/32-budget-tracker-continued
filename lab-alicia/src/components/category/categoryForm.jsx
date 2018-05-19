@@ -53,7 +53,7 @@ class CategoryForm extends React.Component {
           value={this.state.budget}
         />
         <button 
-          type="submit">{this.props.buttonText}
+          type="submit">{this.props.name === 'create' ? 'Submit' : 'Update'}
         </button>
       </form>
     );
