@@ -35,9 +35,11 @@ class ExpenseItem extends React.Component {
     if(this.state.isEditing === true) {
       return (
         <li>
-          <ExpenseForm action='update' buttonText="Update"
-            expenseId={this.props.id} name={this.props.name}
-            price={this.props.price} toggleEdit={this.toggleEdit}
+          <ExpenseForm action='update'
+            expenseId={this.props.id} 
+            name={this.props.name}
+            price={this.props.price} 
+            toggleEdit={this.toggleEdit}
             cancel={this.cancel}>
           </ExpenseForm>
         </li>

@@ -9,7 +9,7 @@ class Dashboard extends React.Component {
     return <div>
       <h1>Track Your Budget</h1>
       <h2>Create A Category:</h2>
-      <CategoryForm name="create"></CategoryForm>
+      <CategoryForm buttonText="create"></CategoryForm>
       <CategoryList></CategoryList>
     </div>;
   }

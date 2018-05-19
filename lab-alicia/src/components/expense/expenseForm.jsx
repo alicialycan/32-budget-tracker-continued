@@ -48,7 +48,7 @@ class ExpenseForm extends React.Component {
           Cancel
         </button>
         <button type="submit">
-          {this.props.buttonText}
+          {this.props.buttonText === 'create' ? 'Add Expense' : 'Update Expense'}
         </button>
       </form>
     );
