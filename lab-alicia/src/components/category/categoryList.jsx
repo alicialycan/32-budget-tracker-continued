@@ -49,7 +49,7 @@ class CategoryList extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({ // get something from store
+const mapStateToProps = state => ({
   categories: state.categoryStore.categories,
 });
 
