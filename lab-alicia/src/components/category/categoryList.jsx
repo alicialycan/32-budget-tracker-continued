@@ -1,5 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {
+  categoryCreate,
+  categoryUpdate,
+  categoryDestroy,
+} from '../../actions/category-actions.js';
 
 import CategoryItem from './categoryItem.jsx';
 
@@ -51,6 +56,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   return {
     categoryCreate: category => dispatch(categoryCreate(category)),
+    categoryUpdate: category => dispatch(categoryUpdate(category)),
+    categoryDestroy: category => dispatch(categoryDestroy(category))
   };
 };
 

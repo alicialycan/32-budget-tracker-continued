@@ -12,6 +12,9 @@ import ExpenseList from '../expense/expenseList.jsx';
 class CategoryItem extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isEditing: false,
+    };
 
     this.handleDelete = this.handleDelete.bind(this),
     this.toggleEdit = this.toggleEdit.bind(this);
@@ -19,11 +22,11 @@ class CategoryItem extends React.Component {
   }
 
   toggleEdit(ev) {
-    this.props.categoryUpdate({isEditing: true, id: this.props.id});
+    this.setState({isEditing: !this.state.isEditing});
   }
 
   toggleOffEdit(ev) {
-    this.props.categoryUpdate({isEditing: false, id: this.props.id});
+    this.props.categoryUpdate({isEditing: false, id: this.props.category.id});
   }
 
   handleDelete(ev) {
@@ -36,31 +39,28 @@ class CategoryItem extends React.Component {
       return (
         <div>
           <CategoryForm name="update" 
-            id={this.props.id}>
+            category={this.props.category}
+            toggleEdit={this.toggleEdit}>
           </CategoryForm>
-          <button 
-            onClick={this.toggleOffEdit}
-            id={this.props.id}>
-            Cancel
-          </button>
         </div>
       );
     }
     return (
-      <li key={this.props.key} id={this.props.id}>
-        {this.props.name}: ${this.props.budget} 
+      <li key={this.props.category.id} id={this.props.category.id}>
+        {this.props.category.name}: ${this.props.category.budget} 
         <button 
-          id={this.props.id} 
+          id={this.props.category.id} 
           onClick={this.handleDelete}>
           Delete
         </button>
         <button 
-          id={this.props.id} 
+          id={this.props.category.id} 
           onClick={this.toggleEdit}>
           Update
         </button>
-        <ExpenseForm categoryId={this.props.id} name="update" buttonText="Create Expense"/>
-        <ExpenseList categoryId={this.props.id} />
+        <ExpenseForm categoryId={this.props.category.id} 
+          buttonText='create' />
+        <ExpenseList categoryId={this.props.category.id} />
       </li> 
     );
   }
